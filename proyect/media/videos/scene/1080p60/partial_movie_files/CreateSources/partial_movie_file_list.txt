@@ -1,0 +1,8 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/pizarron/Documents/PhD/proyect/media/videos/scene/1080p60/partial_movie_files/CreateSources/3977891868_3974808077_4000299170.mp4'
+file 'file:C:/Users/pizarron/Documents/PhD/proyect/media/videos/scene/1080p60/partial_movie_files/CreateSources/2852726489_1704852926_1022587386.mp4'
+file 'file:C:/Users/pizarron/Documents/PhD/proyect/media/videos/scene/1080p60/partial_movie_files/CreateSources/2852726489_1921560529_693283880.mp4'
+file 'file:C:/Users/pizarron/Documents/PhD/proyect/media/videos/scene/1080p60/partial_movie_files/CreateSources/2852726489_4052450221_2496559840.mp4'
+file 'file:C:/Users/pizarron/Documents/PhD/proyect/media/videos/scene/1080p60/partial_movie_files/CreateSources/2852726489_3497250812_2435046359.mp4'
+file 'file:C:/Users/pizarron/Documents/PhD/proyect/media/videos/scene/1080p60/partial_movie_files/CreateSources/2852726489_3925775110_4131132508.mp4'
+file 'file:C:/Users/pizarron/Documents/PhD/proyect/media/videos/scene/1080p60/partial_movie_files/CreateSources/2852726489_3355846487_2435046359.mp4'
