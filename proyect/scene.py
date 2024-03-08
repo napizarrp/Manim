@@ -1,6 +1,26 @@
 from manim import *
 from manim_chemistry import *
 
+
+# Constants
+h = 6.62607015e-34  # Planck's constant (m^2 kg / s)
+c = 299792458  # Speed of light in vacuum (m/s)
+k = 1.380649e-23  # Boltzmann's constant (m^2 kg s^-2 K^-1)
+
+def create_glow(vmobject, rad=1, col=YELLOW):
+    glow_group = VGroup()
+    for idx in range(60):
+        new_circle = Circle(radius=rad*(1.002**(idx**2))/200, stroke_opacity=0, fill_color=col,
+        fill_opacity=0.2-idx/300).move_to(vmobject)
+        glow_group.add(new_circle)
+    return glow_group
+
+def planck_law_nm(wavelength):
+    T = 5778  # Temperature of the Sun (K)
+
+    return (2 * h * c**2) / ((wavelength*1e-9)**5 * (np.exp((h * c) / ((wavelength*1e-9) * k * T)) - 1)) *1e-13
+
+
 class DrawPeriodicTable(Scene):
     def construct(self):
         Table = PeriodicTable(data_file="Elements.csv")
@@ -32,19 +52,16 @@ class CreateSources(Scene):
         self.play(FadeIn(bulb))
         self.play(FadeOut(bulb))
 
-      
-def create_glow(vmobject, rad=1, col=YELLOW):
-    glow_group = VGroup()
-    for idx in range(60):
-        new_circle = Circle(radius=rad*(1.002**(idx**2))/200, stroke_opacity=0, fill_color=col,
-        fill_opacity=0.2-idx/300).move_to(vmobject)
-        glow_group.add(new_circle)
-    return glow_group
+class Create_svg(Scene):
+    def construct(self):
+        svg = SVGMobject("CROMA.svg")
+        circle = Circle()
 
-
-
-
-
+        self.play(Write(svg))
+        self.wait(1)
+        self.play(Transform(svg,circle))
+        self.wait(1)
+        self.play(FadeOut(svg))
 
 class CreateComparation(Scene):
     def construct(self):
@@ -52,30 +69,56 @@ class CreateComparation(Scene):
         self.play(Write(text))
         self.wait(1)
         self.play(FadeOut(text))    
-        dot = Dot()
+        dot = Dot(point=[-4,0,0])
         glow = create_glow(dot, rad=1, col=RED)
         self.add(dot)
         self.play(Transform(dot,glow))
         self.wait(0.5)
         
-        self.play(dot.animate.set_color(YELLOW), run_time=0.5)
-        self.wait(1)
-        self.play(dot.animate.set_color(ORANGE), run_time=0.5)
-        self.wait(1)
-        self.play(dot.animate.set_color(GREEN), run_time=0.5)
-        self.wait(1)
-        self.play(dot.animate.set_color(BLUE), run_time=0.5)
-        self.wait(1)
-        self.play(dot.animate.set_color(PURPLE), run_time=0.5)
-        self.wait(1)
+        self.play(FadeToColor(dot, YELLOW))
+        self.play(FadeToColor(dot, GREEN))
 
 
 
+
+class Graph(Scene):
+    def construct(self):
+
+        # Wavelength range (m)
+
+        axes = Axes(x_range=[100,  1400,400], y_range=[0, 3.1],x_length=5,y_length=4,axis_config={
+                'color' : WHITE,
+                'stroke_width' : 2,
+                'include_numbers' : True,
+                'include_tip' : False,
+
+
+                'decimal_number_config' : {
+                    'num_decimal_places' : 0,
+                    'include_sign' : False,
+                    'color' : WHITE
+                }
+            },)
+        y_label = axes.get_y_axis_label(
+            Tex("Spectra Radiance").scale(0.65).rotate(90 * DEGREES),
+            edge=LEFT,
+            direction=LEFT,
+            buff=0.3,
+        )
+        x_label = axes.get_x_axis_label(
+            Tex("Wavelength(nm)").scale(0.65),
+            edge=DOWN,
+            direction=DOWN,
+            buff=0.5,
+        )
+        self.play(FadeIn(axes, y_label, x_label))
     
-        #create a line like it where a laser
-        line = Line(start=(0,0,0), end=RIGHT)
-        line.set_color(YELLOW)
-        self.play(Create(line))
-
+        graph = axes.plot(planck_law_nm, color=BLUE)
+        self.play(Create(graph))
+        self.wait(1)
+        # colored area under the curve
+        area = axes.get_area(graph,x_range=[400, 800], color=[PURPLE,BLUE,GREEN,YELLOW,ORANGE,RED], opacity=0.5)
+        self.play(Create(area))
+        self.wait(1)
 
 
