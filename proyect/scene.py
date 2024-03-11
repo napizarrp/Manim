@@ -21,6 +21,10 @@ def planck_law_nm(wavelength):
     return (2 * h * c**2) / ((wavelength*1e-9)**5 * (np.exp((h * c) / ((wavelength*1e-9) * k * T)) - 1)) *1e-13
 
 
+def gaussian(Amplitude=1,mu=700,sigma=20):
+    return lambda x: Amplitude * np.exp(-((x - mu)** 2) / (2 * sigma ** 2)) 
+
+
 class DrawPeriodicTable(Scene):
     def construct(self):
         Table = PeriodicTable(data_file="Elements.csv")
@@ -92,7 +96,6 @@ class Graph(Scene):
                 'include_numbers' : True,
                 'include_tip' : False,
 
-
                 'decimal_number_config' : {
                     'num_decimal_places' : 0,
                     'include_sign' : False,
@@ -109,16 +112,24 @@ class Graph(Scene):
             Tex("Wavelength(nm)").scale(0.65),
             edge=DOWN,
             direction=DOWN,
-            buff=0.5,
+            buff=0.4,
         )
         self.play(FadeIn(axes, y_label, x_label))
     
         graph = axes.plot(planck_law_nm, color=BLUE)
         self.play(Create(graph))
-        self.wait(1)
         # colored area under the curve
-        area = axes.get_area(graph,x_range=[400, 800], color=[PURPLE,BLUE,GREEN,YELLOW,ORANGE,RED], opacity=0.5)
+        area = axes.get_area(graph,x_range=[380, 750])
+        area.set_color_by_gradient((RED,RED,ORANGE,YELLOW,GREEN,GREEN,BLUE,PURPLE))
+        area.set_sheen_direction(LEFT)
         self.play(Create(area))
+        self.wait(1)
+
+        # create a gaussian function
+        gaussian_graph = axes.plot(gaussian(Amplitude=2), x_range=(100, 1400, 1), color=RED, use_smoothing=False)
+
+        self.play(Transform(graph,gaussian_graph),FadeOut(area))
+
         self.wait(1)
 
 

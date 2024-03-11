@@ -1,6 +1,7 @@
 # This file is used internally by FFMPEG.
-file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/3977891868_1544988357_223132457.mp4'
-file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_1323632665_874982304.mp4'
-file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_3890345977_989158121.mp4'
-file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_37863760_1311407809.mp4'
-file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_3890345977_3586186584.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/3977891868_3309609696_223132457.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_1323632665_1869788323.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_5299415_406359214.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_3890345977_2843366768.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_2419728616_2944145740.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Graph/2852726489_3890345977_3760659919.mp4'

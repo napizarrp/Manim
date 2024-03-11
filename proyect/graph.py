@@ -25,3 +25,18 @@ plt.ylabel('Spectral Radiance (W·m⁻²·sr⁻¹·m⁻¹)')
 plt.title('Solar Radiation Spectrum')
 plt.grid(True)
 plt.show()
+
+def gaussian(Amplitude=1,mu=700,sigma=20):
+    return lambda x: Amplitude * np.exp(-((x - mu)** 2) / (2 * sigma ** 2)) 
+
+#plot gaussian 
+x = np.linspace(600, 800, 1000)
+y = gaussian(1,700,20)(x)
+plt.figure(figsize=(10, 6))
+plt.plot(x, y, color='blue')
+plt.xlabel('Wavelength (nm)')
+plt.ylabel('Intensity')
+plt.title('Gaussian Function')
+
+plt.grid(True)
+plt.show()
