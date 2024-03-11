@@ -130,6 +130,6 @@ class Graph(Scene):
 
         self.play(Transform(graph,gaussian_graph),FadeOut(area))
 
-        self.wait(1)
+        self.wait(2)
 
 
