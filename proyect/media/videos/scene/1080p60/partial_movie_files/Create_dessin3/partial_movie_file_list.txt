@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Create_dessin3/3977891868_3418875863_223132457.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Create_dessin3/2852726489_1784320771_610086756.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/Create_dessin3/2852726489_2475379470_2459306723.mp4'

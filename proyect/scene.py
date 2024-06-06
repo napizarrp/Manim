@@ -20,13 +20,18 @@ def planck_law_nm(wavelength):
 
     return (2 * h * c**2) / ((wavelength*1e-9)**5 * (np.exp((h * c) / ((wavelength*1e-9) * k * T)) - 1)) *1e-13
 
-
+def shift_left(mobject):
+    return mobject.shift(3*LEFT)
+def shift_right(mobject):
+    return mobject.shift(3*RIGHT)
 def gaussian(Amplitude=1,mu=700,sigma=20):
     return lambda x: Amplitude * np.exp(-((x - mu)** 2) / (2 * sigma ** 2)) 
 
 
 class DrawPeriodicTable(Scene):
     def construct(self):
+        self.camera.background_color = WHITE
+
         Table = PeriodicTable(data_file="Elements.csv")
         self.play(Write(Table))
         carbon = MElementObject.from_csv_file_data(filename="Elementos.csv", atomic_number=6)
@@ -56,16 +61,51 @@ class CreateSources(Scene):
         self.play(FadeIn(bulb))
         self.play(FadeOut(bulb))
 
+class Create_dessin(Scene):
+    def construct(self):
+        self.camera.background_color = WHITE
+
+        svg = SVGMobject("hybr.svg")
+
+        self.play(Write(svg),run_time=3)
+        self.wait(1)
+
 class Create_svg(Scene):
     def construct(self):
-        svg = SVGMobject("CROMA.svg")
-        circle = Circle()
 
-        self.play(Write(svg))
+        text = Tex("SleepAble")
+        text.set_color(PURPLE)
+        text.scale(1.5)
+        self.play(Write(text),run_time=2)
         self.wait(1)
-        self.play(Transform(svg,circle))
+
+        lit = SVGMobject("cama.svg")
+        dessin = SVGMobject("dessin-2.svg")
+        bruit = SVGMobject("bruit.svg")
+
+        dessin.scale(1.5)
+        lit.scale(1.5)
+        bruit.scale(1.5)
+
+        lit.shift(RIGHT*2)
+        dessin.shift(RIGHT*2)
+        bruit.shift(RIGHT*2)
+
+        self.play(ApplyFunction(shift_left,text))
+        self.play(Write(lit),run_time=3)
+        self.play(Write(bruit),run_time=0.5)
+        self.play(Wiggle(bruit),run_time=0.5)
+        self.play(FadeIn(dessin),FadeOut(lit),Unwrite(bruit),run_time=3)
+
         self.wait(1)
-        self.play(FadeOut(svg))
+        self.play(FadeOut(dessin),Unwrite(text))
+        self.wait(1)
+
+
+
+
+    
+
 
 class CreateComparation(Scene):
     def construct(self):
@@ -126,10 +166,11 @@ class Graph(Scene):
         self.wait(1)
 
         # create a gaussian function
-        gaussian_graph = axes.plot(gaussian(Amplitude=2), x_range=(100, 1400, 1), color=RED, use_smoothing=False)
+        gaussian_graph = axes.plot(gaussian(Amplitude=2), x_range=(100, 1400,1), color=RED, use_smoothing=False)
 
         self.play(Transform(graph,gaussian_graph),FadeOut(area))
 
         self.wait(2)
 
 
+#& C:/ProgramData/anaconda3/python.exe -m manim 'C:\Users\pizarron\Documents\Manim\proyect\scene.py' Create_svg  

@@ -1,2 +1,4 @@
 # This file is used internally by FFMPEG.
-file 'file:C:/Users/pizarron/Documents/PhD/proyect/media/videos/scene/1080p60/partial_movie_files/DrawPeriodicTable/3977891868_3597069927_223132457.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/DrawPeriodicTable/2621265332_731862998_223132457.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/DrawPeriodicTable/4272032393_274076240_2036374866.mp4'
+file 'file:C:/Users/pizarron/Documents/Manim/proyect/media/videos/scene/1080p60/partial_movie_files/DrawPeriodicTable/4272032393_1474765315_2909155825.mp4'
